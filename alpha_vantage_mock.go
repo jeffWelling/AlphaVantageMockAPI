@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -64,14 +65,14 @@ func (response *Response) String() string {
 			}
 
 			output += "        \"" + datestamp + "\": {\n"
-			output += "            \"1. open\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].Open) + "\",\n"
-			output += "            \"2. high\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].High) + "\",\n"
-			output += "            \"3. low\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].Low) + "\",\n"
-			output += "            \"4. close\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].Close) + "\",\n"
-			output += "            \"5. adjusted close\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].Adjusted_Close) + "\",\n"
+			output += "            \"1. open\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].Open, 'f', -1, 64) + "\",\n"
+			output += "            \"2. high\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].High, 'f', -1, 64) + "\",\n"
+			output += "            \"3. low\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].Low, 'f', -1, 64) + "\",\n"
+			output += "            \"4. close\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].Close, 'f', -1, 64) + "\",\n"
+			output += "            \"5. adjusted close\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].Adjusted_Close, 'f', -1, 64) + "\",\n"
 			output += "            \"6. volume\": \"" + fmt.Sprintf("%d", timeseriesdaily[datestamp].Volume) + "\",\n"
-			output += "            \"7. dividend amount\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].Dividend_Amount) + "\",\n"
-			output += "            \"8. split coefficient\": \"" + fmt.Sprintf("%f", timeseriesdaily[datestamp].Split_Coefficient) + "\",\n"
+			output += "            \"7. dividend amount\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].Dividend_Amount, 'f', 4, 64) + "\",\n"
+			output += "            \"8. split coefficient\": \"" + strconv.FormatFloat(timeseriesdaily[datestamp].Split_Coefficient, 'f', 1, 64) + "\",\n"
 		}
 	}
 	output += "        },\n    }\n}\n"
