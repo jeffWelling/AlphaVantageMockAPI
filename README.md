@@ -6,6 +6,8 @@ without hitting rate limits, and in an offline environment. This tool does not
 return or cache values from alpha vantage, all values from this program are
 fabricated for testing purposes. 
 
+### Caveats
+
 This program does not currently handle holidays, though it does recognize
 weekends and doen't simulate market days on weekends. Due to the differences in
 holidays and regions/countries I haven't tried to find a way to skip holidays
