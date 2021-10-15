@@ -23,19 +23,19 @@ type ResponseMetaData struct {
 }
 
 type TimeSeriesDailyAdjusted struct {
-	Open              float64
-	High              float64
-	Low               float64
-	Close             float64
-	Adjusted_Close    float64
-	Volume            uint64
-	Dividend_Amount   float64
-	Split_Coefficient float64
+	Open              float64 `json:"1. open"`
+	High              float64 `json:"2. high"`
+	Low               float64 `json:"3. low"`
+	Close             float64 `json:"4. close"`
+	Adjusted_Close    float64 `json:"5. adjusted close"`
+	Volume            uint64  `json:"6. volume"`
+	Dividend_Amount   float64 `json:"7. dividend amount"`
+	Split_Coefficient float64 `json:"8. split coefficient"`
 }
 
 type Response struct {
-	MetaData        ResponseMetaData
-	TimeSeriesDaily []map[string]TimeSeriesDailyAdjusted
+	MetaData        ResponseMetaData                     `json:"Meta Data"`
+	TimeSeriesDaily []map[string]TimeSeriesDailyAdjusted `json:"TimeSeries (Daily)"`
 }
 
 func (response *Response) String() string {
@@ -59,8 +59,7 @@ func (response *Response) String() string {
 		for datestamp := range timeseriesdaily {
 			if !first_entry {
 				output += "        },\n"
-			}
-			if first_entry {
+			} else {
 				first_entry = false
 			}
 
